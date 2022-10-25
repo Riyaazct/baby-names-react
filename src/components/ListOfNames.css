@@ -1,0 +1,10 @@
+.container {
+  display: inline-flex;
+}
+
+.box {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: burlywood;
+}
