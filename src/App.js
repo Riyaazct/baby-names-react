@@ -1,5 +1,5 @@
 import "./App.css";
-import ListOfNames from "./components/ListOfNames";
+import ListOfNames from "./ListOfNames";
 
 function App() {
   return (
