@@ -31,6 +31,7 @@ function ListOfNames(props) {
       <input
         type="text"
         className="search"
+        placeholder="Search Names"
         onChange={handleKeyPress}
       />
       <div className="container">

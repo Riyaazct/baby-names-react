@@ -22,4 +22,6 @@ body {
   margin: auto;
   margin-top: 150px;
   border: 2px solid pink;
+  border-radius: 50px;
+  display: flex;
 }
