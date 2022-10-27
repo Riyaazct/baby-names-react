@@ -7,14 +7,6 @@
 
 body {
   height: 100vh;
-}
-
-.App {
-  padding: 50px;
-  width: 80vw;
-  margin: auto;
-  margin-top: 150px;
-  border: 2px solid pink;
   background: rgb(252, 70, 107);
   background: radial-gradient(
     circle,
@@ -22,4 +14,12 @@ body {
     rgba(252, 70, 107, 1) 10%,
     rgba(118, 70, 252, 1) 100%
   );
+}
+
+.App {
+  padding: 20px;
+  width: 80vw;
+  margin: auto;
+  margin-top: 150px;
+  border: 2px solid pink;
 }

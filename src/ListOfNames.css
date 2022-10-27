@@ -1,5 +1,7 @@
 .container {
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 5px solid red; */
 }
 
 .box {
@@ -7,4 +9,9 @@
   padding: 5px;
   border-radius: 5px;
   background-color: burlywood;
+}
+
+.search {
+  margin: 5px;
+  height: 2em;
 }
