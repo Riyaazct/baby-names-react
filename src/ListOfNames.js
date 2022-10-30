@@ -38,10 +38,8 @@ function ListOfNames(props) {
     setSavedId(e.target.id);
 
     names.forEach((item) => {
-      if (
-        item.id === Number(e.target.id) &&
-        e.target.parentNode.hidden === false
-      ) {
+      let id = Number(e.target.id);
+      if (item.id === id && e.target.parentNode.hidden === false) {
         setActive("favourites_container");
         favourite.push(item);
         e.target.parentNode.hidden = true;
@@ -65,7 +63,7 @@ function ListOfNames(props) {
 
     // setActive(null);
   };
-
+  // toggle for border around favourites section
   const handleToggle = () => setActive(!isActive);
 
   return (
