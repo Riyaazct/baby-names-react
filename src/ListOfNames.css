@@ -10,6 +10,9 @@
   border-radius: 5px;
   background-color: burlywood;
 }
+.box p {
+  margin: 0 5px 0 5px;
+}
 
 .search {
   margin: 5px;
@@ -46,7 +49,7 @@
 
 .favourite_buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   cursor: pointer;
   font-size: 0.8rem;
 }

@@ -53,12 +53,17 @@ function ListOfNames(props) {
         onChange={handleKeyPress}
       />
       <div className="favourites_container">
-        {favourite.map((item, index) => (
-          <ul className="container">
-            <li key={index} className="favourites_list box">
-              {item.name}
-            </li>
-          </ul>
+        {favourite.map(({ name, sex, id }, index) => (
+          <div key={index}>
+            <div className="box">
+              <h4 id={id} onClick={handleOnClick}>
+                {name} {gender(sex)}
+                <div className="favourite_buttons">
+                  <p>➖</p>
+                </div>
+              </h4>
+            </div>
+          </div>
         ))}
       </div>
       <div className="container">
@@ -70,7 +75,7 @@ function ListOfNames(props) {
                 <h4 id={id} onClick={handleOnClick}>
                   {name} {gender(sex)}
                   <div className="favourite_buttons">
-                    <p>➕</p> <p>➖</p>
+                    <p>➕</p>
                   </div>
                 </h4>
               </div>
