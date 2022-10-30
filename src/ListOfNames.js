@@ -52,12 +52,14 @@ function ListOfNames(props) {
         placeholder="Search Names"
         onChange={handleKeyPress}
       />
-      <div>
-        <ul>
-          {favourite.map((item, index) => (
-            <li key={index}>{item.name}</li>
-          ))}
-        </ul>
+      <div className="favourites_container">
+        {favourite.map((item, index) => (
+          <ul className="container">
+            <li key={index} className="favourites_list box">
+              {item.name}
+            </li>
+          </ul>
+        ))}
       </div>
       <div className="container">
         {searchResult
@@ -67,6 +69,9 @@ function ListOfNames(props) {
               <div className="box">
                 <h4 id={id} onClick={handleOnClick}>
                   {name} {gender(sex)}
+                  <div className="favourite_buttons">
+                    <p>➕</p> <p>➖</p>
+                  </div>
                 </h4>
               </div>
             </div>

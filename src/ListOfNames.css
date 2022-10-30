@@ -27,3 +27,26 @@
 .search:focus {
   outline: none;
 }
+
+.favourites_container {
+  border: 2px dashed burlywood;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 98%;
+}
+
+.favourites_list {
+  display: flex;
+  list-style: none;
+}
+
+.favourites_list li {
+}
+
+.favourite_buttons {
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
