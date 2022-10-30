@@ -9,6 +9,7 @@ function ListOfNames(props) {
   const [searchResult, setSearchResult] = useState([]);
   const [favourite, setFavourite] = useState([]);
   const [savedId, setSavedId] = useState();
+  const [classToggle, setClassToggle] = useState("box");
 
   const male = "👦";
   const female = "👧";
@@ -32,17 +33,17 @@ function ListOfNames(props) {
   }, [search]);
 
   // Favourites
+
   const handleOnClick = (e) => {
     setSavedId(e.target.id);
-  };
-
-  useEffect(() => {
+    console.log(e);
     names.forEach((item) => {
-      if (item.id === Number(savedId)) {
+      if (item.id === Number(e.target.id)) {
         favourite.push(item);
+        e.target.parentNode.hidden = true;
       }
     });
-  }, [savedId]);
+  };
 
   return (
     <div>
@@ -58,9 +59,6 @@ function ListOfNames(props) {
             <div className="box">
               <h4 id={id} onClick={handleOnClick}>
                 {name} {gender(sex)}
-                <div className="remove_favourite">
-                  <p>x</p>
-                </div>
               </h4>
             </div>
           </div>
@@ -71,12 +69,9 @@ function ListOfNames(props) {
           .sort((a, b) => (a.name > b.name ? 1 : -1))
           .map(({ name, sex, id }, index) => (
             <div key={index}>
-              <div className="box">
+              <div className={classToggle}>
                 <h4 id={id} onClick={handleOnClick}>
                   {name} {gender(sex)}
-                  <div className="add_favourite">
-                    <p>+</p>
-                  </div>
                 </h4>
               </div>
             </div>

@@ -44,9 +44,6 @@
   list-style: none;
 }
 
-.favourites_list li {
-}
-
 .add_favourite {
   cursor: pointer;
   text-align: center;
@@ -59,4 +56,9 @@
   text-align: center;
   color: red;
   font-weight: 900;
+}
+
+.hidden {
+  display: none;
+  list-style: none;
 }
