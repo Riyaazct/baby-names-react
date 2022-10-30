@@ -9,6 +9,7 @@
   padding: 5px;
   border-radius: 5px;
   background-color: burlywood;
+  cursor: pointer;
 }
 .box p {
   margin: 0 5px 0 5px;
@@ -41,24 +42,5 @@
 
 .favourites_list {
   display: flex;
-  list-style: none;
-}
-
-.add_favourite {
-  cursor: pointer;
-  text-align: center;
-  color: blue;
-  font-weight: 900;
-}
-
-.remove_favourite {
-  cursor: pointer;
-  text-align: center;
-  color: red;
-  font-weight: 900;
-}
-
-.hidden {
-  display: none;
   list-style: none;
 }

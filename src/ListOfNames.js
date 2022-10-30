@@ -9,7 +9,7 @@ function ListOfNames(props) {
   const [searchResult, setSearchResult] = useState([]);
   const [favourite, setFavourite] = useState([]);
   const [savedId, setSavedId] = useState();
-  const [classToggle, setClassToggle] = useState("box");
+  const [parentNode] = useState();
 
   const male = "👦";
   const female = "👧";
@@ -36,10 +36,23 @@ function ListOfNames(props) {
 
   const handleOnClick = (e) => {
     setSavedId(e.target.id);
-    console.log(e);
+
+    names.forEach((item) => {
+      if (
+        item.id === Number(e.target.id) &&
+        e.target.parentNode.hidden === false
+      ) {
+        favourite.push(item);
+        e.target.parentNode.hidden = true;
+      }
+    });
+  };
+
+  const handleOnClickRemove = (e) => {
+    setSavedId(e.target.id);
+
     names.forEach((item) => {
       if (item.id === Number(e.target.id)) {
-        favourite.push(item);
         e.target.parentNode.hidden = true;
       }
     });
@@ -57,7 +70,7 @@ function ListOfNames(props) {
         {favourite.map(({ name, sex, id }, index) => (
           <div key={index}>
             <div className="box">
-              <h4 id={id} onClick={handleOnClick}>
+              <h4 id={id} onClick={handleOnClickRemove}>
                 {name} {gender(sex)}
               </h4>
             </div>
@@ -69,7 +82,7 @@ function ListOfNames(props) {
           .sort((a, b) => (a.name > b.name ? 1 : -1))
           .map(({ name, sex, id }, index) => (
             <div key={index}>
-              <div className={classToggle}>
+              <div className="box">
                 <h4 id={id} onClick={handleOnClick}>
                   {name} {gender(sex)}
                 </h4>
