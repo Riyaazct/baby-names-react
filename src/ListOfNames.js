@@ -4,12 +4,17 @@ import "./ListOfNames.css";
 
 function ListOfNames(props) {
   // eslint-disable-next-line no-unused-vars
-  const [names, setNames] = useState(babyNamesData);
+  let [names, setNames] = useState(babyNamesData);
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+  const [favourite, setFavourite] = useState([]);
+  const [savedId, setSavedId] = useState();
+
   const male = "👦";
   const female = "👧";
   const gender = (sex) => (sex === "f" ? female : male);
+
+  // Search bar
 
   const handleKeyPress = (e) => {
     setSearch(e.target.value);
@@ -26,6 +31,19 @@ function ListOfNames(props) {
     }
   }, [search]);
 
+  // Favourites
+  const handleOnClick = (e) => {
+    setSavedId(e.target.id);
+  };
+
+  useEffect(() => {
+    names.forEach((item) => {
+      if (item.id === Number(savedId)) {
+        favourite.push(item);
+      }
+    });
+  }, [savedId]);
+
   return (
     <div>
       <input
@@ -34,13 +52,20 @@ function ListOfNames(props) {
         placeholder="Search Names"
         onChange={handleKeyPress}
       />
+      <div>
+        <ul>
+          {favourite.map((item, index) => (
+            <li key={index}>{item.name}</li>
+          ))}
+        </ul>
+      </div>
       <div className="container">
         {searchResult
           .sort((a, b) => (a.name > b.name ? 1 : -1))
-          .map(({ name, sex }, index) => (
+          .map(({ name, sex, id }, index) => (
             <div key={index}>
               <div className="box">
-                <h4>
+                <h4 id={id} onClick={handleOnClick}>
                   {name} {gender(sex)}
                 </h4>
               </div>
