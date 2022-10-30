@@ -47,9 +47,16 @@
 .favourites_list li {
 }
 
-.favourite_buttons {
-  display: flex;
-  justify-content: center;
+.add_favourite {
   cursor: pointer;
-  font-size: 0.8rem;
+  text-align: center;
+  color: blue;
+  font-weight: 900;
+}
+
+.remove_favourite {
+  cursor: pointer;
+  text-align: center;
+  color: red;
+  font-weight: 900;
 }

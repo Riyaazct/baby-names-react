@@ -58,8 +58,8 @@ function ListOfNames(props) {
             <div className="box">
               <h4 id={id} onClick={handleOnClick}>
                 {name} {gender(sex)}
-                <div className="favourite_buttons">
-                  <p>➖</p>
+                <div className="remove_favourite">
+                  <p>x</p>
                 </div>
               </h4>
             </div>
@@ -74,8 +74,8 @@ function ListOfNames(props) {
               <div className="box">
                 <h4 id={id} onClick={handleOnClick}>
                   {name} {gender(sex)}
-                  <div className="favourite_buttons">
-                    <p>➕</p>
+                  <div className="add_favourite">
+                    <p>+</p>
                   </div>
                 </h4>
               </div>
