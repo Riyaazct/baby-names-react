@@ -1,7 +1,9 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  /* border: 5px solid red; */
+  border: 2px solid burlywood;
+  margin-top: 5px;
+  border-radius: 10px;
 }
 
 .box {
@@ -16,16 +18,16 @@
 }
 
 .search {
+  width: 70%;
   margin: 5px;
   margin-bottom: 20px;
   height: 2.8em;
-  width: 30%;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
   background: burlywood;
   color: black;
   padding: 10px;
-  margin-left: 35%;
+  text-align: center;
 }
 
 .search:focus {
@@ -33,11 +35,10 @@
 }
 
 .favourites_container {
-  border: 2px dashed burlywood;
-  border-radius: 5px;
+  border: 2px solid burlywood;
+  border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
-  width: 98%;
 }
 
 .favourites_list {

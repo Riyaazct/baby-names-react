@@ -7,9 +7,9 @@ function ListOfNames(props) {
   let [names, setNames] = useState(babyNamesData);
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
-  const [favourite, setFavourite] = useState([]);
+  let [favourite, setFavourite] = useState([]);
   const [savedId, setSavedId] = useState();
-  const [parentNode] = useState();
+  const [isActive, setActive] = useState(null);
 
   const male = "👦";
   const female = "👧";
@@ -42,6 +42,7 @@ function ListOfNames(props) {
         item.id === Number(e.target.id) &&
         e.target.parentNode.hidden === false
       ) {
+        setActive("favourites_container");
         favourite.push(item);
         e.target.parentNode.hidden = true;
       }
@@ -52,11 +53,20 @@ function ListOfNames(props) {
     setSavedId(e.target.id);
 
     names.forEach((item) => {
-      if (item.id === Number(e.target.id)) {
-        e.target.parentNode.hidden = true;
+      let id = Number(e.target.id);
+      if (item.id === id) {
+        const result = favourite.filter((item) => item.id !== id);
+        setFavourite(result);
+        if (result.length <= 0) {
+          handleToggle();
+        }
       }
     });
+
+    // setActive(null);
   };
+
+  const handleToggle = () => setActive(!isActive);
 
   return (
     <div>
@@ -66,16 +76,18 @@ function ListOfNames(props) {
         placeholder="Search Names"
         onChange={handleKeyPress}
       />
-      <div className="favourites_container">
-        {favourite.map(({ name, sex, id }, index) => (
-          <div key={index}>
-            <div className="box">
-              <h4 id={id} onClick={handleOnClickRemove}>
-                {name} {gender(sex)}
-              </h4>
+      <div className={isActive ? "favourites_container" : null}>
+        {favourite
+          .sort((a, b) => (a.name > b.name ? 1 : -1))
+          .map(({ name, sex, id }, index) => (
+            <div key={index}>
+              <div className="box">
+                <h4 id={id} onClick={handleOnClickRemove}>
+                  {name} {gender(sex)}
+                </h4>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
       <div className="container">
         {searchResult
