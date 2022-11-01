@@ -10,6 +10,7 @@ function ListOfNames(props) {
   let [favourite, setFavourite] = useState([]);
   const [savedId, setSavedId] = useState();
   const [isActive, setActive] = useState(null);
+  const [classForMainList, setClassForMainList] = useState("");
 
   const male = "👦";
   const female = "👧";
@@ -32,39 +33,41 @@ function ListOfNames(props) {
     }
   }, [search]);
 
-  // Favourites
+  // End of search
 
+  // Favourites section
+
+  // function to move item from main list to favourite section
   const handleOnClick = (e) => {
-    setSavedId(e.target.id);
+    // setSavedId(e.target.id);
+    let id = Number(e.target.id);
 
     names.forEach((item) => {
-      let id = Number(e.target.id);
-      if (item.id === id && e.target.parentNode.hidden === false) {
-        setActive("favourites_container");
+      if (item.id === id) {
         favourite.push(item);
-        e.target.parentNode.hidden = true;
+        let result = searchResult.filter((name) => name.id !== id);
+
+        setSearchResult(result);
       }
+      // setFavourite(result);
     });
   };
-
+  // function to remove item from favourites
   const handleOnClickRemove = (e) => {
     setSavedId(e.target.id);
-
     names.forEach((item) => {
       let id = Number(e.target.id);
       if (item.id === id) {
-        const result = favourite.filter((item) => item.id !== id);
+        const result = favourite.filter(
+          (element) => element.id !== id
+        );
         setFavourite(result);
         if (result.length <= 0) {
-          handleToggle();
+          setActive(null);
         }
       }
     });
-
-    // setActive(null);
   };
-  // toggle for border around favourites section
-  const handleToggle = () => setActive(!isActive);
 
   return (
     <div>
@@ -74,11 +77,11 @@ function ListOfNames(props) {
         placeholder="Search Names"
         onChange={handleKeyPress}
       />
-      <div className={isActive ? "favourites_container" : null}>
+      <div className={isActive}>
         {favourite
           .sort((a, b) => (a.name > b.name ? 1 : -1))
           .map(({ name, sex, id }, index) => (
-            <div key={index}>
+            <div className="favourites_list" key={index}>
               <div className="box">
                 <h4 id={id} onClick={handleOnClickRemove}>
                   {name} {gender(sex)}
@@ -91,7 +94,7 @@ function ListOfNames(props) {
         {searchResult
           .sort((a, b) => (a.name > b.name ? 1 : -1))
           .map(({ name, sex, id }, index) => (
-            <div key={index}>
+            <div className={classForMainList} key={index}>
               <div className="box">
                 <h4 id={id} onClick={handleOnClick}>
                   {name} {gender(sex)}

@@ -40,8 +40,3 @@
   display: flex;
   flex-wrap: wrap;
 }
-
-.favourites_list {
-  display: flex;
-  list-style: none;
-}
