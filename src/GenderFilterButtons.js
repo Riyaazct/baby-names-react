@@ -7,27 +7,27 @@ function GenderFilterButtons({
   sex,
   favourite,
   searchResult,
+  setSearchResult,
+  setFavourite,
 }) {
   const handleClick = (e) => {
-    console.log("clicked", e.target.value);
+    const value = e.target.value;
+    if (value === "m") {
+      const result = names.filter((item) => item.sex.includes(value));
+      setSearchResult(result);
+    }
+    if (value === "f") {
+      const result = names.filter((item) => item.sex.includes(value));
+      setSearchResult(result);
+    }
   };
 
   return (
     <Fragment>
-      <button
-        name="boys"
-        value="m"
-        className="boys"
-        onClick={handleClick}
-      >
+      <button value="m" className="boys" onClick={handleClick}>
         Boys
       </button>
-      <button
-        name="girls"
-        value="f"
-        className="girls"
-        onClick={handleClick}
-      >
+      <button value="f" className="girls" onClick={handleClick}>
         Girls
       </button>
     </Fragment>

@@ -99,6 +99,8 @@ function ListOfNames(props) {
         names={names}
         favourites={favourite}
         searchResult={searchResult}
+        setSearchResult={setSearchResult}
+        setFavourite={setFavourite}
       />
       <div className="container">
         {searchResult
