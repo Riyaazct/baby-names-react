@@ -23,5 +23,11 @@ body {
   margin-top: 150px;
   border: 2px solid pink;
   border-radius: 50px;
-  display: flex;
+  text-align: center;
+  color: #212121;
+}
+
+input,
+input::placeholder {
+  font: 20px/3 sans-serif;
 }

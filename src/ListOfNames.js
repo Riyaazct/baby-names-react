@@ -4,12 +4,19 @@ import "./ListOfNames.css";
 
 function ListOfNames(props) {
   // eslint-disable-next-line no-unused-vars
-  const [names, setNames] = useState(babyNamesData);
+  let [names, setNames] = useState(babyNamesData);
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+  let [favourite, setFavourite] = useState([]);
+  const [savedId, setSavedId] = useState();
+  const [isActive, setActive] = useState(null);
+  const [classForMainList, setClassForMainList] = useState("");
+
   const male = "👦";
   const female = "👧";
   const gender = (sex) => (sex === "f" ? female : male);
+
+  // Search bar
 
   const handleKeyPress = (e) => {
     setSearch(e.target.value);
@@ -26,6 +33,42 @@ function ListOfNames(props) {
     }
   }, [search]);
 
+  // End of search
+
+  // Favourites section
+
+  // function to move item from main list to favourite section
+  const handleOnClick = (e) => {
+    let id = Number(e.target.id);
+
+    names.forEach((item) => {
+      if (item.id === id) {
+        favourite.push(item);
+        setActive("favourites_container");
+        let result = searchResult.filter((name) => name.id !== id);
+        setSearchResult(result);
+      }
+      // setFavourite(result);
+    });
+  };
+  // function to remove item from favourites
+  const handleOnClickRemove = (e) => {
+    setSavedId(e.target.id);
+    names.forEach((item) => {
+      let id = Number(e.target.id);
+      if (item.id === id) {
+        const result = favourite.filter(
+          (element) => element.id !== id
+        );
+        setFavourite(result);
+        searchResult.push(item);
+        if (result.length <= 0) {
+          setActive(null);
+        }
+      }
+    });
+  };
+
   return (
     <div>
       <input
@@ -34,13 +77,26 @@ function ListOfNames(props) {
         placeholder="Search Names"
         onChange={handleKeyPress}
       />
+      <div className={isActive}>
+        {favourite
+          .sort((a, b) => (a.name > b.name ? 1 : -1))
+          .map(({ name, sex, id }, index) => (
+            <div className="favourites_list" key={index}>
+              <div className="box">
+                <h4 id={id} onClick={handleOnClickRemove}>
+                  {name} {gender(sex)}
+                </h4>
+              </div>
+            </div>
+          ))}
+      </div>
       <div className="container">
         {searchResult
           .sort((a, b) => (a.name > b.name ? 1 : -1))
-          .map(({ name, sex }, index) => (
-            <div key={index}>
+          .map(({ name, sex, id }, index) => (
+            <div className={classForMainList} key={index}>
               <div className="box">
-                <h4>
+                <h4 id={id} onClick={handleOnClick}>
                   {name} {gender(sex)}
                 </h4>
               </div>
