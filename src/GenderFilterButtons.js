@@ -15,11 +15,6 @@ function GenderFilterButtons({
 
     const result = names.filter((item) => item.sex.includes(value));
     setSearchResult(result);
-
-    // if (value === "f") {
-    //   const result = names.filter((item) => item.sex.includes(value));
-    //   setSearchResult(result);
-    // }
   };
 
   return (
