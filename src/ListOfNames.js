@@ -39,14 +39,13 @@ function ListOfNames(props) {
 
   // function to move item from main list to favourite section
   const handleOnClick = (e) => {
-    // setSavedId(e.target.id);
     let id = Number(e.target.id);
 
     names.forEach((item) => {
       if (item.id === id) {
         favourite.push(item);
+        setActive("favourites_container");
         let result = searchResult.filter((name) => name.id !== id);
-
         setSearchResult(result);
       }
       // setFavourite(result);
@@ -62,6 +61,7 @@ function ListOfNames(props) {
           (element) => element.id !== id
         );
         setFavourite(result);
+        searchResult.push(item);
         if (result.length <= 0) {
           setActive(null);
         }
