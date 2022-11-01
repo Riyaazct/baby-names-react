@@ -2,8 +2,9 @@
   display: flex;
   flex-wrap: wrap;
   border: 2px solid burlywood;
-  margin-top: 5px;
-  border-radius: 10px;
+  margin: 15px;
+  border-radius: 20px;
+  padding: 20px;
 }
 
 .box {
@@ -39,6 +40,9 @@
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 15px;
 }
 
 .favourites_container p {
