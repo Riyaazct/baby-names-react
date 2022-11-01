@@ -9,7 +9,6 @@ function ListOfNames(props) {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   let [favourite, setFavourite] = useState([]);
-  const [savedId, setSavedId] = useState();
   const [isActive, setActive] = useState(null);
 
   const male = "👦";
@@ -53,7 +52,6 @@ function ListOfNames(props) {
   };
   // function to remove item from favourites
   const handleOnClickRemove = (e) => {
-    setSavedId(e.target.id);
     names.forEach((item) => {
       let id = Number(e.target.id);
       if (item.id === id) {
