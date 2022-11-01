@@ -77,7 +77,10 @@ function ListOfNames(props) {
         placeholder="Search Names"
         onChange={handleKeyPress}
       />
+
+      <h2>Favourites: </h2>
       <div className={isActive}>
+        <p>Click a name to add it to favourites</p>
         {favourite
           .sort((a, b) => (a.name > b.name ? 1 : -1))
           .map(({ name, sex, id }, index) => (

@@ -40,3 +40,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.favourites_container p {
+  display: none;
+}
