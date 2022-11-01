@@ -12,14 +12,14 @@ function GenderFilterButtons({
 }) {
   const handleClick = (e) => {
     const value = e.target.value;
-    if (value === "m") {
-      const result = names.filter((item) => item.sex.includes(value));
-      setSearchResult(result);
-    }
-    if (value === "f") {
-      const result = names.filter((item) => item.sex.includes(value));
-      setSearchResult(result);
-    }
+
+    const result = names.filter((item) => item.sex.includes(value));
+    setSearchResult(result);
+
+    // if (value === "f") {
+    //   const result = names.filter((item) => item.sex.includes(value));
+    //   setSearchResult(result);
+    // }
   };
 
   return (
