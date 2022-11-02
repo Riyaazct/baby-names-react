@@ -18,12 +18,12 @@ function ListOfNames(props) {
   // Search bar
 
   const handleKeyPress = (e) => {
-    setSearch(e.target.value);
+    setSearch(e.target.value.toLowerCase());
   };
 
   useEffect(() => {
     if (search !== "") {
-      const result = searchResult.filter((item) =>
+      const result = names.filter((item) =>
         item.name.toLowerCase().includes(search)
       );
       setSearchResult(result);
