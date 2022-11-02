@@ -23,7 +23,7 @@ function ListOfNames(props) {
 
   useEffect(() => {
     if (search !== "") {
-      const result = names.filter((item) =>
+      const result = searchResult.filter((item) =>
         item.name.toLowerCase().includes(search)
       );
       setSearchResult(result);

@@ -11,9 +11,11 @@ function GenderFilterButtons({
   setFavourite,
 }) {
   const handleClick = (e) => {
-    const value = e.target.value;
+    const value = e.target.value.toLowerCase();
 
-    const result = names.filter((item) => item.sex.includes(value));
+    const result = searchResult.filter((item) =>
+      item.sex.toLowerCase().includes(value)
+    );
     setSearchResult(result);
   };
 
