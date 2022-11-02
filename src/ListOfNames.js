@@ -1,6 +1,7 @@
 import babyNamesData from "./babyNamesData.json";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import "./ListOfNames.css";
+import GenderFilterButtons from "./GenderFilterButtons";
 
 function ListOfNames(props) {
   // eslint-disable-next-line no-unused-vars
@@ -8,9 +9,7 @@ function ListOfNames(props) {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   let [favourite, setFavourite] = useState([]);
-  const [savedId, setSavedId] = useState();
   const [isActive, setActive] = useState(null);
-  const [classForMainList, setClassForMainList] = useState("");
 
   const male = "👦";
   const female = "👧";
@@ -19,12 +18,12 @@ function ListOfNames(props) {
   // Search bar
 
   const handleKeyPress = (e) => {
-    setSearch(e.target.value);
+    setSearch(e.target.value.toLowerCase());
   };
 
   useEffect(() => {
     if (search !== "") {
-      const result = names.filter((item) =>
+      const result = searchResult.filter((item) =>
         item.name.toLowerCase().includes(search)
       );
       setSearchResult(result);
@@ -53,7 +52,6 @@ function ListOfNames(props) {
   };
   // function to remove item from favourites
   const handleOnClickRemove = (e) => {
-    setSavedId(e.target.id);
     names.forEach((item) => {
       let id = Number(e.target.id);
       if (item.id === id) {
@@ -69,8 +67,10 @@ function ListOfNames(props) {
     });
   };
 
+  // click handler for gender filter buttons
+
   return (
-    <div>
+    <Fragment>
       <input
         type="text"
         className="search"
@@ -93,11 +93,18 @@ function ListOfNames(props) {
             </div>
           ))}
       </div>
+      <GenderFilterButtons
+        names={names}
+        favourites={favourite}
+        searchResult={searchResult}
+        setSearchResult={setSearchResult}
+        setFavourite={setFavourite}
+      />
       <div className="container">
         {searchResult
           .sort((a, b) => (a.name > b.name ? 1 : -1))
           .map(({ name, sex, id }, index) => (
-            <div className={classForMainList} key={index}>
+            <div key={index}>
               <div className="box">
                 <h4 id={id} onClick={handleOnClick}>
                   {name} {gender(sex)}
@@ -106,7 +113,7 @@ function ListOfNames(props) {
             </div>
           ))}
       </div>
-    </div>
+    </Fragment>
   );
 }
 

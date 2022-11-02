@@ -1,0 +1,14 @@
+button {
+  padding: 10px;
+  width: 5em;
+  margin: 5px;
+  border-radius: 7px;
+}
+
+.boys {
+  background: rgb(22, 69, 210);
+}
+
+.girls {
+  background: palevioletred;
+}
