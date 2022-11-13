@@ -13,9 +13,7 @@ function GenderFilterButtons({
   const handleClick = (e) => {
     const value = e.target.value.toLowerCase();
 
-    const result = searchResult.filter((item) =>
-      item.sex.toLowerCase().includes(value)
-    );
+    const result = names.filter((item) => item.sex.includes(value));
     setSearchResult(result);
   };
 

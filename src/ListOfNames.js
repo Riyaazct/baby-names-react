@@ -47,7 +47,6 @@ function ListOfNames(props) {
         let result = searchResult.filter((name) => name.id !== id);
         setSearchResult(result);
       }
-      // setFavourite(result);
     });
   };
   // function to remove item from favourites
